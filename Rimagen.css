@@ -1,0 +1,514 @@
+/* ========================= */
+/* 🔥 PROFILE SETUP */
+/* ========================= */
+
+.profile-setup{
+
+  position: relative;
+
+  width: 100%;
+  height: 100vh;
+
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    linear-gradient(
+      180deg,
+      #05060A 0%,
+      #090B12 55%,
+      #05060A 100%
+    );
+
+}
+
+/* ========================= */
+/* 🔥 AMBIENT */
+/* ========================= */
+
+.profile-ambient{
+
+  position: absolute;
+  inset: -20%;
+
+  pointer-events: none;
+
+  background:
+
+    radial-gradient(
+      circle at 30% 40%,
+      rgba(92,92,255,.16),
+      transparent 34%
+    ),
+
+    radial-gradient(
+      circle at 70% 60%,
+      rgba(255,0,140,.10),
+      transparent 36%
+    ),
+
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(150,0,255,.08),
+      transparent 42%
+    );
+
+  filter: blur(70px);
+
+  opacity: .9;
+
+  animation:
+    ambientFloat 12s
+    ease-in-out infinite;
+}
+
+@keyframes ambientFloat{
+
+  0%,100%{
+
+    transform:
+      scale(1)
+      translateY(0px);
+
+  }
+
+  50%{
+
+    transform:
+      scale(1.04)
+      translateY(-12px);
+
+  }
+}
+
+/* ========================= */
+/* 🔥 CARD */
+/* ========================= */
+
+.profile-card{
+
+  position: relative;
+  z-index: 2;
+
+  width: 88%;
+  max-width: 430px;
+
+  padding:
+    38px 28px;
+
+  border-radius: 34px;
+
+  background:
+    rgba(14,14,18,.52);
+
+  backdrop-filter:
+    blur(26px);
+
+  -webkit-backdrop-filter:
+    blur(26px);
+
+  border:
+    1px solid
+    rgba(255,255,255,.06);
+
+  box-shadow:
+    0 20px 70px
+    rgba(0,0,0,.45);
+
+  overflow: hidden;
+}
+
+/* ========================= */
+/* 🔥 STEPS */
+/* ========================= */
+
+.profile-step{
+
+  display: none;
+
+  opacity: 0;
+
+  transform:
+    translateY(18px);
+
+}
+
+.active-step{
+
+  display: block;
+
+  animation:
+    profileReveal .7s
+    cubic-bezier(.22,1,.36,1)
+    forwards;
+}
+
+.leaving-step{
+
+  animation:
+    profileLeave .45s
+    cubic-bezier(.22,1,.36,1)
+    forwards;
+}
+
+@keyframes profileReveal{
+
+  from{
+
+    opacity: 0;
+
+    transform:
+      translateY(18px);
+
+    filter:
+      blur(10px);
+  }
+
+  to{
+
+    opacity: 1;
+
+    transform:
+      translateY(0px);
+
+    filter:
+      blur(0px);
+  }
+}
+
+@keyframes profileLeave{
+
+  to{
+
+    opacity: 0;
+
+    transform:
+      translateY(-22px);
+
+    filter:
+      blur(8px);
+  }
+}
+
+/* ========================= */
+/* 🔥 TOP */
+/* ========================= */
+
+.profile-top{
+
+  margin-bottom: 34px;
+}
+
+.profile-mini{
+
+  color:
+    rgba(255,255,255,.42);
+
+  font-size: .78rem;
+
+  font-weight: 600;
+
+  letter-spacing: 1.4px;
+
+  text-transform: uppercase;
+
+  margin-bottom: 12px;
+}
+
+.profile-title{
+
+  color: white;
+
+  font-size:
+    clamp(2.1rem, 6vw, 3rem);
+
+  font-weight: 900;
+
+  line-height: .96;
+
+  letter-spacing: -1.8px;
+
+  margin: 0;
+
+  text-shadow:
+    0 8px 24px
+    rgba(0,0,0,.3);
+}
+
+/* ========================= */
+/* 🔥 INPUT */
+/* ========================= */
+
+.profile-input{
+
+  width: 100%;
+
+  border: none;
+  outline: none;
+
+  background:
+    rgba(255,255,255,.04);
+
+  border:
+    1px solid
+    rgba(255,255,255,.05);
+
+  border-radius: 22px;
+
+  padding:
+    20px 22px;
+
+  color: white;
+
+  font-size: 1.08rem;
+
+  font-weight: 600;
+
+  margin-bottom: 22px;
+
+  transition:
+    border .25s ease,
+    background .25s ease,
+    transform .25s ease;
+}
+
+.profile-input::placeholder{
+
+  color:
+    rgba(255,255,255,.28);
+}
+
+.profile-input:focus{
+
+  border:
+    1px solid
+    rgba(120,120,255,.34);
+
+  background:
+    rgba(255,255,255,.06);
+
+  transform:
+    translateY(-1px);
+}
+
+/* ========================= */
+/* 🔥 BUTTON */
+/* ========================= */
+
+.profile-btn{
+
+  width: 100%;
+
+  border: none;
+  outline: none;
+
+  border-radius: 999px;
+
+  padding:
+    18px 24px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(80,90,255,.92),
+      rgba(180,70,255,.92)
+    );
+
+  color: white;
+
+  font-size: .98rem;
+
+  font-weight: 700;
+
+  letter-spacing: .2px;
+
+  box-shadow:
+    0 14px 40px
+    rgba(90,90,255,.22);
+
+  transition:
+    transform .18s ease,
+    opacity .18s ease;
+}
+
+.profile-btn:active{
+
+  transform:
+    scale(.98);
+
+  opacity: .88;
+}
+
+/* ========================= */
+/* 🔥 UPLOAD */
+/* ========================= */
+
+.upload-area{
+
+  position: relative;
+
+  width: 100%;
+  height: 360px;
+
+  border-radius: 28px;
+
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    rgba(255,255,255,.03);
+
+  border:
+    1px solid
+    rgba(255,255,255,.05);
+
+  margin-bottom: 24px;
+
+  cursor: pointer;
+}
+
+/* ========================= */
+/* 🔥 PREVIEW */
+/* ========================= */
+
+.preview-image{
+
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: none;
+
+  animation:
+    previewBreathing 9s
+    ease-in-out infinite;
+}
+
+@keyframes previewBreathing{
+
+  0%,100%{
+
+    transform:
+      scale(1);
+
+  }
+
+  50%{
+
+    transform:
+      scale(1.035);
+
+  }
+}
+
+/* ========================= */
+/* 🔥 PLACEHOLDER */
+/* ========================= */
+
+.upload-placeholder{
+
+  position: relative;
+  z-index: 2;
+
+  color:
+    rgba(255,255,255,.58);
+
+  font-size: 1rem;
+
+  font-weight: 600;
+
+  transition:
+    opacity .35s ease;
+}
+
+/* ========================= */
+/* 🔥 LOADING */
+/* ========================= */
+
+.profile-loading{
+
+  position: fixed;
+  inset: 0;
+
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    rgba(0,0,0,.42);
+
+  backdrop-filter:
+    blur(20px);
+
+  -webkit-backdrop-filter:
+    blur(20px);
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition:
+    opacity .45s ease;
+}
+
+.loading-visible{
+
+  opacity: 1;
+}
+
+/* ========================= */
+/* 🔥 HEART */
+/* ========================= */
+
+.profile-loading-heart{
+
+  width: 74px;
+  height: 74px;
+
+  animation:
+    loadingHeartbeat 1.8s
+    ease-in-out infinite;
+}
+
+.profile-loading-heart svg{
+
+  width: 100%;
+  height: 100%;
+
+  fill:
+    rgba(255,0,120,.95);
+
+  filter:
+    drop-shadow(
+      0 0 22px
+      rgba(255,0,120,.34)
+    );
+}
+
+@keyframes loadingHeartbeat{
+
+  0%,100%{
+
+    transform:
+      scale(1);
+
+  }
+
+  50%{
+
+    transform:
+      scale(1.12);
+
+  }
+}

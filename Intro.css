@@ -1,0 +1,276 @@
+/* ========================= */
+/* 🔥 INTRO VIEW */
+/* ========================= */
+
+.intro-scroll-view{
+  position:relative;
+
+  width:100%;
+  height:100vh;
+
+  overflow:hidden;
+
+  background:
+    linear-gradient(
+      180deg,
+      #05060B 0%,
+      #090B12 48%,
+      #05060A 100%
+    );
+}
+
+/* ========================= */
+/* SCREEN */
+/* ========================= */
+
+.intro-screen{
+  position:absolute;
+  inset:0;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  overflow:hidden;
+}
+
+/* ========================= */
+/* AMBIENT LIGHTS */
+/* ========================= */
+
+.intro-screen::before{
+  content:"";
+
+  position:absolute;
+  inset:-25%;
+
+  background:
+    radial-gradient(
+      circle at 25% 20%,
+      rgba(91, 108, 255, 0.22),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at 75% 30%,
+      rgba(168, 85, 255, 0.18),
+      transparent 58%
+    ),
+    radial-gradient(
+      circle at 50% 90%,
+      rgba(0, 180, 255, 0.10),
+      transparent 60%
+    );
+    
+  filter:blur(80px);
+
+  opacity:.92;
+
+  animation:
+    introAmbient 10s
+    ease-in-out infinite;
+
+  pointer-events:none;
+}
+
+@keyframes introAmbient{
+
+  0%,100%{
+    transform:
+      scale(1)
+      translateY(0px);
+
+    opacity:.78;
+  }
+
+  50%{
+    transform:
+      scale(1.05)
+      translateY(-12px);
+
+    opacity:1;
+  }
+}
+
+/* ========================= */
+/* CONTENT */
+/* ========================= */
+
+.intro-content{
+  position:relative;
+  z-index:2;
+
+  width:100%;
+  height:100%;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
+
+  padding:40px 26px;
+}
+
+/* ========================= */
+/* HERO */
+/* ========================= */
+
+.intro-hero{
+  position:absolute;
+
+  inset:0;
+
+  display:flex;
+  flex-direction:column;
+
+  align-items:center;
+  justify-content:center;
+
+  width:100%;
+  height:100%;
+}
+
+/* ========================= */
+/* BRAND */
+/* ========================= */
+
+.intro-brand{
+  color:white;
+
+  font-size:
+    clamp(4rem, 13vw, 7rem);
+
+  font-weight:900;
+
+  line-height:.92;
+
+  letter-spacing:-3px;
+
+  margin:0;
+
+  text-shadow:
+    0 14px 34px
+    rgba(0,0,0,.42);
+}
+
+/* ========================= */
+/* DATE */
+/* ========================= */
+
+.intro-date{
+  margin-top:14px;
+
+  color:
+    rgba(255,255,255,.42);
+
+  font-size:.95rem;
+
+  font-weight:500;
+
+  letter-spacing:.24em;
+
+  text-transform:uppercase;
+}
+
+/* ========================= */
+/* SECONDARY */
+/* ========================= */
+
+.intro-secondary{
+  position:absolute;
+
+  inset:0;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  padding:40px 26px;
+
+  pointer-events:none;
+}
+
+/* ========================= */
+/* TITLE */
+/* ========================= */
+
+.intro-title{
+  color:white;
+
+  font-size:
+    clamp(1.4rem, 5vw, 2rem);
+
+  font-weight:650;
+
+  line-height:1.4;
+
+  letter-spacing:-.4px;
+
+  margin:0;
+
+  text-shadow:
+    0 8px 24px
+    rgba(0,0,0,.28);
+}
+
+/* ========================= */
+/* SWIPE */
+/* ========================= */
+
+.intro-swipe{
+  position:absolute;
+
+  bottom:58px;
+  left:50%;
+
+  transform:translateX(-50%);
+
+  color:
+    rgba(255,255,255,.48);
+
+  font-size:.94rem;
+
+  font-weight:500;
+
+  letter-spacing:.02em;
+}
+
+.intro-swipe::after{
+  content:"^";
+
+  display:block;
+
+  margin-top:10px;
+
+  font-size:1.1rem;
+
+  animation:
+    introArrow 2.8s
+    ease-in-out infinite;
+}
+
+@keyframes introArrow{
+
+  0%,100%{
+    transform:translateY(0px);
+    opacity:.35;
+  }
+
+  50%{
+    transform:translateY(10px);
+    opacity:1;
+  }
+}
+
+/* ========================= */
+/* EXIT */
+/* ========================= */
+
+.intro-leaving{
+  opacity:0;
+
+  transition:
+    opacity .9s ease;
+}

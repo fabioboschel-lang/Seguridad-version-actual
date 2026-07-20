@@ -1,0 +1,423 @@
+/* ========================= */
+/* 🔥 CREAR PERFIL */
+/* ========================= */
+
+.crearperfil-view{
+
+  position: relative;
+
+  width: 100%;
+  height: 100vh;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      180deg,
+      #05060A 0%,
+      #090B12 55%,
+      #05060A 100%
+    );
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ========================= */
+/* 🔥 AMBIENT */
+/* ========================= */
+
+.crearperfil-ambient{
+
+  position: absolute;
+  inset: -20%;
+
+  pointer-events: none;
+
+  background:
+
+    radial-gradient(
+      circle at 30% 40%,
+      rgba(80,90,255,.14),
+      transparent 34%
+    ),
+
+    radial-gradient(
+      circle at 70% 60%,
+      rgba(255,0,120,.10),
+      transparent 38%
+    ),
+
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(140,0,255,.08),
+      transparent 44%
+    );
+
+  filter: blur(70px);
+
+  animation:
+    ambientFloat 12s
+    ease-in-out infinite;
+}
+
+@keyframes ambientFloat{
+
+  0%,100%{
+
+    transform:
+      scale(1)
+      translateY(0px);
+
+  }
+
+  50%{
+
+    transform:
+      scale(1.04)
+      translateY(-12px);
+
+  }
+}
+
+/* ========================= */
+/* 🔥 PROGRESS */
+/* ========================= */
+
+.crearperfil-progress-wrapper{
+
+  position: absolute;
+
+  top: 42px;
+  left: 50%;
+
+  transform:
+    translateX(-50%);
+
+  width: 84%;
+  max-width: 420px;
+
+  z-index: 10;
+}
+
+.crearperfil-progress-track{
+
+  width: 100%;
+  height: 4px;
+
+  border-radius: 999px;
+
+  overflow: hidden;
+
+  background:
+    rgba(255,255,255,.08);
+}
+
+.crearperfil-progress-fill{
+
+  width: 50%;
+  height: 100%;
+
+  border-radius: inherit;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(90,100,255,.95),
+      rgba(255,0,140,.95)
+    );
+
+  transition:
+    width .6s
+    cubic-bezier(.22,1,.36,1);
+}
+
+.crearperfil-progress-text{
+
+  margin-top: 10px;
+
+  color:
+    rgba(255,255,255,.42);
+
+  font-size: .82rem;
+
+  font-weight: 600;
+
+  letter-spacing: .4px;
+
+  text-align: center;
+}
+
+/* ========================= */
+/* 🔥 CONTAINER */
+/* ========================= */
+
+.crearperfil-container{
+
+  position: relative;
+
+  width: 88%;
+  max-width: 430px;
+}
+
+/* ========================= */
+/* 🔥 STEP */
+/* ========================= */
+
+.crearperfil-step{
+
+  display: none;
+
+  opacity: 0;
+
+  transform:
+    translateY(20px);
+}
+
+.active-step{
+
+  display: block;
+
+  animation:
+    revealStep .7s
+    cubic-bezier(.22,1,.36,1)
+    forwards;
+}
+
+.leaving-step{
+
+  animation:
+    leaveStep .35s
+    cubic-bezier(.22,1,.36,1)
+    forwards;
+}
+
+@keyframes revealStep{
+
+  from{
+
+    opacity: 0;
+
+    transform:
+      translateY(24px);
+
+    filter:
+      blur(10px);
+  }
+
+  to{
+
+    opacity: 1;
+
+    transform:
+      translateY(0px);
+
+    filter:
+      blur(0px);
+  }
+}
+
+@keyframes leaveStep{
+
+  to{
+
+    opacity: 0;
+
+    transform:
+      translateY(-24px);
+
+    filter:
+      blur(8px);
+  }
+}
+
+/* ========================= */
+/* 🔥 CONTENT */
+/* ========================= */
+
+.crearperfil-content{
+
+  text-align: center;
+}
+
+/* ========================= */
+/* 🔥 TITLE */
+/* ========================= */
+
+.crearperfil-title{
+
+  color: white;
+
+  font-size:
+    clamp(2.3rem, 8vw, 3.4rem);
+
+  font-weight: 900;
+
+  line-height: .94;
+
+  letter-spacing: -2px;
+
+  margin-bottom: 18px;
+}
+
+/* ========================= */
+/* 🔥 SUBTITLE */
+/* ========================= */
+
+.crearperfil-subtitle{
+
+  color:
+    rgba(255,255,255,.54);
+
+  font-size: 1rem;
+
+  line-height: 1.6;
+
+  max-width: 320px;
+
+  margin:
+    0 auto 38px auto;
+}
+
+/* ========================= */
+/* 🔥 INPUT */
+/* ========================= */
+
+.crearperfil-input{
+
+  width: 100%;
+
+  background: transparent;
+
+  border: none;
+  outline: none;
+
+  text-align: center;
+
+  color: white;
+
+  font-size:
+    clamp(2rem, 7vw, 3rem);
+
+  font-weight: 800;
+
+  letter-spacing: -1.5px;
+
+  padding:
+    12px 0;
+
+  caret-color:
+    rgba(255,255,255,.9);
+}
+
+.crearperfil-input::placeholder{
+
+  color:
+    rgba(255,255,255,.18);
+}
+
+/* ========================= */
+/* 🔥 UPLOAD */
+/* ========================= */
+
+.crearperfil-upload{
+
+  position: relative;
+
+  width: 100%;
+  aspect-ratio: .82;
+
+  max-height: 520px;
+
+  border-radius: 34px;
+
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    rgba(255,255,255,.03);
+
+  border:
+    1px solid
+    rgba(255,255,255,.06);
+
+  cursor: pointer;
+
+  margin-bottom: 20px;
+}
+
+/* ========================= */
+/* 🔥 PLUS */
+/* ========================= */
+
+.crearperfil-plus{
+
+  color:
+    rgba(255,255,255,.28);
+
+  font-size: 4.5rem;
+
+  font-weight: 200;
+
+  line-height: 1;
+
+  transition:
+    opacity .35s ease,
+    transform .35s ease;
+}
+
+/* ========================= */
+/* 🔥 PREVIEW */
+/* ========================= */
+
+.crearperfil-preview{
+
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: none;
+
+  animation:
+    previewFloat 12s
+    ease-in-out infinite;
+}
+
+@keyframes previewFloat{
+
+  0%,100%{
+
+    transform:
+      scale(1);
+
+  }
+
+  50%{
+
+    transform:
+      scale(1.04);
+
+  }
+}
+
+/* ========================= */
+/* 🔥 NOTE */
+/* ========================= */
+
+.crearperfil-note{
+
+  color:
+    rgba(255,255,255,.34);
+
+  font-size: .88rem;
+
+  line-height: 1.5;
+}

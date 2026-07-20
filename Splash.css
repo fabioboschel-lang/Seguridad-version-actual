@@ -1,0 +1,81 @@
+/* ===================== */
+/* SPLASH SCREEN */
+/* ===================== */
+
+.splash-screen{
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #06070d;
+  overflow: hidden;
+}
+
+/* ===================== */
+/* AMBIENT BACKGROUND (CLEAN) */
+/* ===================== */
+
+.splash-screen::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(91, 95, 255, 0.10),
+      rgba(157, 77, 255, 0.06),
+      transparent 65%
+    );
+
+  animation: ambientBreath 8s ease-in-out infinite;
+}
+
+/* pulso suave (solo intensidad) */
+@keyframes ambientBreath {
+  0%, 100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+/* ===================== */
+/* LOGO */
+/* ===================== */
+
+.splash-logo{
+  width: 160px;
+  height: auto;
+
+  opacity: 0;
+  transform: translateY(6px) scale(0.98);
+  filter: blur(3px);
+
+  animation: logoReveal 1.4s ease-out forwards;
+}
+
+/* aparición limpia tipo materialización */
+@keyframes logoReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+    filter: blur(3px);
+  }
+
+  60% {
+    opacity: 1;
+    filter: blur(1px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}

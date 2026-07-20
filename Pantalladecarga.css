@@ -1,0 +1,185 @@
+/* ============================== */
+/* 🔥 PREMIUM LOADING SCREEN */
+/* ============================== */
+
+.feed-loading{
+
+  position: fixed;
+  inset: 0;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  overflow:hidden;
+
+  z-index:99999;
+
+  background:
+
+    radial-gradient(
+      circle at top,
+      rgba(255,0,102,.10),
+      transparent 34%
+    ),
+
+    radial-gradient(
+      circle at bottom,
+      rgba(217,70,239,.10),
+      transparent 38%
+    ),
+
+    linear-gradient(
+      180deg,
+      #040508 0%,
+      #090B12 50%,
+      #040508 100%
+    );
+}
+
+/* ============================== */
+/* 🔥 AMBIENT LIGHTS */
+/* ============================== */
+
+.feed-loading::before{
+
+  content:"";
+
+  position:absolute;
+  inset:-25%;
+
+  background:
+
+    radial-gradient(
+      circle at 30% 40%,
+      rgba(255,0,102,.13),
+      transparent 28%
+    ),
+
+    radial-gradient(
+      circle at 70% 60%,
+      rgba(217,70,239,.12),
+      transparent 30%
+    );
+
+  filter: blur(90px);
+
+  animation:
+    ambientMove 9s
+    ease-in-out infinite;
+
+  opacity:.82;
+}
+
+@keyframes ambientMove{
+
+  0%,100%{
+
+    transform:
+      translateY(0px)
+      scale(1);
+
+    opacity:.72;
+  }
+
+  50%{
+
+    transform:
+      translateY(-14px)
+      scale(1.08);
+
+    opacity:1;
+  }
+}
+
+/* ============================== */
+/* 🔥 CENTER */
+/* ============================== */
+
+.loader-center{
+
+  position: relative;
+
+  width: 120px;
+  height: 120px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* ============================== */
+/* 🔥 HEART */
+/* ============================== */
+
+.loader-heart{
+
+  width:58px;
+  height:58px;
+
+  fill:#ff2d75;
+
+  opacity:.95;
+
+  filter:
+    drop-shadow(
+      0 0 20px
+      rgba(255,45,117,.42)
+    );
+
+  animation:
+    heartBeat 2.4s
+    ease-in-out infinite,
+    heartFloat 6s
+    ease-in-out infinite;
+}
+
+/* ❤️ latido */
+
+@keyframes heartBeat{
+
+  0%,100%{
+
+    transform:scale(1);
+  }
+
+  20%{
+
+    transform:scale(1.08);
+  }
+
+  38%{
+
+    transform:scale(.98);
+  }
+
+  55%{
+
+    transform:scale(1.04);
+  }
+}
+
+/* 🌫️ flotación */
+
+@keyframes heartFloat{
+
+  0%,100%{
+
+    translate:0 0;
+  }
+
+  50%{
+
+    translate:0 -8px;
+  }
+}
+
+/* ============================== */
+/* 🔥 FEED HIDDEN */
+/* ============================== */
+
+.hidden-feed{
+
+  opacity:0;
+  visibility:hidden;
+}
