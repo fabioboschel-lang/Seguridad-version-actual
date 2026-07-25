@@ -11,6 +11,8 @@ from "./IntroScrollView.js";
 
 import { initNavigation } from './navigate.js';
 
+import {ticket} from "./ticket.js";
+
 const app = document.getElementById("app");
 
 window.addEventListener("load", () => {
@@ -70,7 +72,7 @@ export function navigate(view, params = {}) {
   if (view === "welcome") WelcomeView(app);
   if (view === "username") Crearperfil(app);
   if (view === "intro") IntroScrollView(app);
-  
+  if (view === "ticket") ticket(app);
   
 
 }

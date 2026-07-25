@@ -1,0 +1,151 @@
+import { createClient } from "jsr:@supabase/supabase-js@2";
+
+const supabase = createClient(
+  "https://qexgbswdbwlpydolpcll.supabase.co",
+  Deno.env.get("SERVICE_ROLE_KEY")!
+);
+
+Deno.serve(async (req) => {
+  try {
+
+    const body = await req.json();
+
+    const paymentId = body?.data?.id;
+
+    if (!paymentId) {
+      return new Response(
+        JSON.stringify({
+          message: "No payment id recibido",
+        }),
+        {
+          status: 200,
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
+        }
+      );
+    }
+
+    const accessToken =
+      Deno.env.get("MP_ACCESS_TOKEN");
+
+    if (!accessToken) {
+      throw new Error(
+        "MP_ACCESS_TOKEN no configurado"
+      );
+    }
+
+    const paymentResponse = await fetch(
+      `https://api.mercadopago.com/v1/payments/${paymentId}`,
+      {
+        headers: {
+          Authorization:
+            `Bearer ${accessToken}`,
+        },
+      }
+    );
+
+    const payment =
+      await paymentResponse.json();
+
+    if (!paymentResponse.ok) {
+      throw new Error(
+        JSON.stringify(payment)
+      );
+    }
+
+    if (payment.status !== "approved") {
+
+      return new Response(
+        JSON.stringify({
+          message:
+            "Pago recibido pero no aprobado",
+          status:
+            payment.status,
+        }),
+        {
+          status: 200,
+          headers: {
+            "Content-Type":
+              "application/json",
+            "Access-Control-Allow-Origin":
+              "*",
+          },
+        }
+      );
+
+    }
+
+    const userId =
+      payment.external_reference;
+
+    if (!userId) {
+      throw new Error(
+        "El pago no tiene external_reference"
+      );
+    }
+
+    // Generar token aleatorio único para el QR
+    const qrToken =
+      crypto.randomUUID();
+
+    const { error } =
+      await supabase
+        .from("Tickets")
+        .upsert(
+          {
+            User: userId,
+            "payment-id": payment.id,
+            qr_token: qrToken,
+            Estado: "activo",
+          },
+          {
+            onConflict: "User",
+          }
+        );
+
+    if (error) {
+      throw error;
+    }
+
+    return new Response(
+      JSON.stringify({
+        message:
+          "Ticket actualizado correctamente",
+      }),
+      {
+        status: 200,
+        headers: {
+          "Content-Type":
+            "application/json",
+          "Access-Control-Allow-Origin":
+            "*",
+        },
+      }
+    );
+
+  } catch (error) {
+
+    console.error(error);
+
+    return new Response(
+      JSON.stringify({
+        error:
+          error instanceof Error
+            ? error.message
+            : "Error desconocido",
+      }),
+      {
+        status: 500,
+        headers: {
+          "Content-Type":
+            "application/json",
+          "Access-Control-Allow-Origin":
+            "*",
+        },
+      }
+    );
+
+  }
+});
