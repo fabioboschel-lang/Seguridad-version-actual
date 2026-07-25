@@ -118,7 +118,7 @@ const {
 
 if (
   ticketData?.Estado ===
-  "activo"
+  "usable"
 ) {
 
   ticketBtn.textContent =
