@@ -58,6 +58,7 @@ export function navigate(view, params = {}) {
     view === "feed" ||
     view === "welcome" ||
     view === "intro" ||
+    view === "ticket" ||
     view === "house"
   )
     ? "none"
