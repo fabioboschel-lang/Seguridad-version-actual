@@ -95,7 +95,7 @@ export async function ticket(app) {
     document
       .getElementById("ticketStatus")
       .textContent =
-      data.Estado === "activo"
+      data.Estado === "usable"
         ? "Ticket válido"
         : "Ticket utilizado";
 
